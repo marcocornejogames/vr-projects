@@ -26,7 +26,7 @@ public class TeleportationManager : MonoBehaviour
         _cancelAction.action.Enable();
         _cancelAction.action.performed += OnTeleportCancel;
 
-        _thumbstickAction.action.Disable();
+        _thumbstickAction.action.Enable();
 
         //Find components
         _rayInteractor = GetComponent<XRRayInteractor>();
@@ -56,7 +56,7 @@ public class TeleportationManager : MonoBehaviour
 
     private void ToggleTeleportation(bool isOn)
     {
-        Debug.Log("Toggle Teleport = " + isOn);
+        if (_teleportationProvider.isActiveAndEnabled == false) isOn = false;
         _rayInteractor.enabled = isOn;
         _isActive = isOn;
     }
@@ -71,6 +71,7 @@ public class TeleportationManager : MonoBehaviour
 
         TeleportRequest request = new TeleportRequest();
         request.destinationPosition = hit.point;
+        
 
         _teleportationProvider.QueueTeleportRequest(request);
         ToggleTeleportation(false);
