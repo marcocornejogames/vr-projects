@@ -419,7 +419,7 @@
                     "path": "<XRController>{LeftHand}/Primary2DAxis",
                     "interactions": "",
                     "processors": "StickDeadzone",
-                    "groups": "Continuous Move",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false

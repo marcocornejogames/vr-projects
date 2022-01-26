@@ -56,6 +56,7 @@ public class TeleportationManager : MonoBehaviour
 
     private void ToggleTeleportation(bool isOn)
     {
+        Debug.Log("Toggle Teleport = " + isOn);
         _rayInteractor.enabled = isOn;
         _isActive = isOn;
     }

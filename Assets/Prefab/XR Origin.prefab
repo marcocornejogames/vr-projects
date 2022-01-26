@@ -168,7 +168,7 @@ CharacterController:
   m_GameObject: {fileID: 8434599832866642567}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.4
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8434599832866642567}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af6bf904e410ee8479f9093d8830d1f8, type: 3}
   m_Name: 
@@ -1590,7 +1590,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.061602004, y: 0.03683376, z: 0.12169242}
-  m_Center: {x: -0.0013846381, y: 0.0012230766, z: 0.042205185}
+  m_Center: {x: 0, y: 0.0012230766, z: 0.042205185}
 --- !u!1 &8434599833894413909
 GameObject:
   m_ObjectHideFlags: 0
