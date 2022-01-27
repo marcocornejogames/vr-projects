@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private InputActionReference _thumbInputReference;
     [SerializeField] private ActionBasedController _actionBasedController;
     [SerializeField] private HandAnimation _handAnimation;
+    [SerializeField] private Grabbing _grabbing;
 
 
     //Unity Calls _______________________________________________________
@@ -17,7 +19,14 @@ public class HandController : MonoBehaviour
     {
         _actionBasedController = GetComponent<ActionBasedController>();
         _handAnimation = GetComponentInChildren<HandAnimation>();
+        _grabbing = GetComponentInChildren<Grabbing>();
+
+
+        _actionBasedController.selectAction.action.started += TryGrab;
+        _actionBasedController.selectAction.action.canceled += ReleaseGrab;
     }
+
+
 
     private void Update()
     {
@@ -30,7 +39,18 @@ public class HandController : MonoBehaviour
         _handAnimation.SetGrip(_actionBasedController.selectAction.action.ReadValue<float>());
         _handAnimation.SetIndex(_actionBasedController.activateAction.action.ReadValue<float>());
         _handAnimation.SetThumb(_thumbInputReference.action.ReadValue<float>()); //TODO: Find a way to read Thumb value
-        Debug.Log($"{_thumbInputReference.action.ReadValue<float>()}, {gameObject.name}");
+    }
+
+
+    //___________________________________ GRABBING & RELEASING
+    private void TryGrab(InputAction.CallbackContext context)
+    {
+        _grabbing.Grab();
+    }
+
+    private void ReleaseGrab(InputAction.CallbackContext context)
+    {
+        _grabbing.Release();
     }
 
 }
