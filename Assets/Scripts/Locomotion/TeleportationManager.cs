@@ -13,6 +13,7 @@ public class TeleportationManager : MonoBehaviour
     [SerializeField] private XRRayInteractor _rayInteractor;
     [SerializeField] private TeleportationProvider _teleportationProvider;
 
+
     [Header("Feedback")]
     [SerializeField] private bool _isActive;
 

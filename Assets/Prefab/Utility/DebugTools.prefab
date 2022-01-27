@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 0}
+  _debugMessage: {fileID: 0}
+  _maxDebugMessages: 5
   _lowBeep: {fileID: 8300000, guid: 1aad05c55bf193547b4ef334751fef14, type: 3}
   _highBeep: {fileID: 8300000, guid: ec96c8ffbff986749b8f61a49fdaa59a, type: 3}
-  _bool: 0
+  _currentDebugMessages: []
 --- !u!82 &495170758219341848
 AudioSource:
   m_ObjectHideFlags: 0

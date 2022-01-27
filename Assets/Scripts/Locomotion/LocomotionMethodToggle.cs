@@ -23,6 +23,7 @@ public class LocomotionMethodToggle : MonoBehaviour
     [SerializeField] private bool _setSnapTurnAsDefault = true;
 
     [Header("Debug")]
+    [SerializeField] private bool _displayDebugMessages = true;
     [SerializeField] private bool _playSoundOnToggle = true;
 
     //UNITY MESSAGES __________________________________________________
@@ -61,6 +62,7 @@ public class LocomotionMethodToggle : MonoBehaviour
         _continuousMove.enabled = !_continuousMove.isActiveAndEnabled;
 
         if(_playSoundOnToggle) DebugTools.Instance.PlaySound(_teleportation.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
+        if (_displayDebugMessages) DebugTools.Instance.DisplayMessage($"Continuous Move: {_continuousMove.isActiveAndEnabled}.");
     }
     private void ToggleTurnMode(InputAction.CallbackContext context)
     {
@@ -68,6 +70,7 @@ public class LocomotionMethodToggle : MonoBehaviour
         _continuousTurn.enabled = !_continuousTurn.isActiveAndEnabled;
 
         if (_playSoundOnToggle) DebugTools.Instance.PlaySound(_snapTurn.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
+        if (_displayDebugMessages) DebugTools.Instance.DisplayMessage($"Continuous Turn: {_continuousTurn.isActiveAndEnabled}.");
     }
 
 
