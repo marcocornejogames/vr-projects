@@ -16,11 +16,14 @@ public class LocomotionMethodToggle : MonoBehaviour
     [SerializeField] private TeleportationProvider _teleportation;
     [SerializeField] private ActionBasedContinuousMoveProvider _continuousMove;
     [SerializeField] private ActionBasedSnapTurnProvider _snapTurn;
-    [SerializeField] private ActionBasedContinuousTurnProvider _continousTurn;
+    [SerializeField] private ActionBasedContinuousTurnProvider _continuousTurn;
 
     [Header("Customization")]
     [SerializeField] private bool _setTeleportAsDefault = true;
     [SerializeField] private bool _setSnapTurnAsDefault = true;
+
+    [Header("Debug")]
+    [SerializeField] private bool _playSoundOnToggle = true;
 
     //UNITY MESSAGES __________________________________________________
     private void Awake()
@@ -28,17 +31,18 @@ public class LocomotionMethodToggle : MonoBehaviour
         _teleportation = GetComponent<TeleportationProvider>();
         _continuousMove = GetComponent<ActionBasedContinuousMoveProvider>();
         _snapTurn = GetComponent<ActionBasedSnapTurnProvider>();
-        _continousTurn = GetComponent<ActionBasedContinuousTurnProvider>();
+        _continuousTurn = GetComponent<ActionBasedContinuousTurnProvider>();
 
         _teleportation.enabled = _setTeleportAsDefault;
         _continuousMove.enabled = !_setTeleportAsDefault;
 
         _snapTurn.enabled = _setSnapTurnAsDefault;
-        _continousTurn.enabled = !_setSnapTurnAsDefault;
+        _continuousTurn.enabled = !_setSnapTurnAsDefault;
 
 
         _movementToggleInput.action.started += ToggleMoveMode;
         _turnToggleInput.action.started += ToggleTurnMode;
+
 
     }
     void Start()
@@ -55,11 +59,15 @@ public class LocomotionMethodToggle : MonoBehaviour
     {
         _teleportation.enabled = !_teleportation.isActiveAndEnabled;
         _continuousMove.enabled = !_continuousMove.isActiveAndEnabled;
+
+        if(_playSoundOnToggle) DebugTools.Instance.PlaySound(_teleportation.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
     }
     private void ToggleTurnMode(InputAction.CallbackContext context)
     {
         _snapTurn.enabled = !_snapTurn.isActiveAndEnabled;
-        _continousTurn.enabled = !_continousTurn.isActiveAndEnabled;
+        _continuousTurn.enabled = !_continuousTurn.isActiveAndEnabled;
+
+        if (_playSoundOnToggle) DebugTools.Instance.PlaySound(_snapTurn.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
     }
 
 
