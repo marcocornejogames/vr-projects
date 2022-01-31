@@ -6,12 +6,12 @@ using TMPro;
 
 //Marco Cornejo, 2022
 [RequireComponent(typeof(AudioSource))]
-public class DebugTools : MonoBehaviour
+public class VRDebugTools : MonoBehaviour
 {
     [Header("Component References")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private TextMeshProUGUI _debugMessage;
-    public static DebugTools Instance;
+    public static VRDebugTools Instance;
 
     [Header("Customization")]
     [SerializeField] private int _maxDebugMessages = 3;

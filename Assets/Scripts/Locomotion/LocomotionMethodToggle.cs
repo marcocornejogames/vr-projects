@@ -61,16 +61,16 @@ public class LocomotionMethodToggle : MonoBehaviour
         _teleportation.enabled = !_teleportation.isActiveAndEnabled;
         _continuousMove.enabled = !_continuousMove.isActiveAndEnabled;
 
-        if(_playSoundOnToggle) DebugTools.Instance.PlaySound(_teleportation.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
-        if (_displayDebugMessages) DebugTools.Instance.DisplayMessage($"Continuous Move: {_continuousMove.isActiveAndEnabled}.");
+        if(_playSoundOnToggle) VRDebugTools.Instance.PlaySound(_teleportation.isActiveAndEnabled ? VRDebugTools.SoundBitType.High : VRDebugTools.SoundBitType.Low);
+        if (_displayDebugMessages) VRDebugTools.Instance.DisplayMessage($"Continuous Move: {_continuousMove.isActiveAndEnabled}.");
     }
     private void ToggleTurnMode(InputAction.CallbackContext context)
     {
         _snapTurn.enabled = !_snapTurn.isActiveAndEnabled;
         _continuousTurn.enabled = !_continuousTurn.isActiveAndEnabled;
 
-        if (_playSoundOnToggle) DebugTools.Instance.PlaySound(_snapTurn.isActiveAndEnabled ? DebugTools.SoundBitType.High : DebugTools.SoundBitType.Low);
-        if (_displayDebugMessages) DebugTools.Instance.DisplayMessage($"Continuous Turn: {_continuousTurn.isActiveAndEnabled}.");
+        if (_playSoundOnToggle) VRDebugTools.Instance.PlaySound(_snapTurn.isActiveAndEnabled ? VRDebugTools.SoundBitType.High : VRDebugTools.SoundBitType.Low);
+        if (_displayDebugMessages) VRDebugTools.Instance.DisplayMessage($"Continuous Turn: {_continuousTurn.isActiveAndEnabled}.");
     }
 
 

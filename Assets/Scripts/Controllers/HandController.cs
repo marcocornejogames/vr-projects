@@ -24,6 +24,8 @@ public class HandController : MonoBehaviour
 
         _actionBasedController.selectAction.action.started += TryGrab;
         _actionBasedController.selectAction.action.canceled += ReleaseGrab;
+
+        _actionBasedController.activateAction.action.performed += TryInteract;
     }
 
 
@@ -53,4 +55,18 @@ public class HandController : MonoBehaviour
         _grabbing.Release();
     }
 
+    //______________________________________ INTERACTING
+    private void TryInteract(InputAction.CallbackContext context)
+    {
+        if (_grabbing.GetHeldObject() == null) return;
+        _grabbing.GetHeldObject().TryGetComponent<IInteractable>(out IInteractable interactable);
+
+        if (interactable == null)
+        {
+            VRDebugTools.Instance.DisplayMessage("Tried to interact but no interactable was found");
+            return;
+        }
+
+        interactable.Interact();
+    }
 }

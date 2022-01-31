@@ -80,6 +80,7 @@ public class Grabbing : MonoBehaviour
     private IEnumerator GrabObject(Collider collider, Rigidbody objectRigidbody)
     {
         _isGrabbing = true;
+
         Transform originalFollowTarget = _handPhysics.FollowTarget;
 
         //Create grab point
@@ -130,5 +131,12 @@ public class Grabbing : MonoBehaviour
 
         //Reset follow target
         _handPhysics.FollowTarget = originalFollowTarget;
+    }
+
+    //Interaction References ______________________________________
+
+    public GameObject GetHeldObject()
+    {
+        return _heldObject;
     }
 }
